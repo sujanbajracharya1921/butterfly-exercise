@@ -88,7 +88,7 @@ const QuestionReview = (props: any) => {
               <div
                 className={`${checkUserRatingStatus(
                   i + 1
-                )} justify-center hover:bg-[#1b828e] hover: flex  items-center text-center  hover:rounded-[50%] h-10 w-10 hover:h-11 hover:w-11 hover:absolute
+                )} justify-center h-10 w-10 items-center text-center hover:bg-[#1b828e] hover: flex hover:rounded-[50%]  hover:h-11 hover:w-11 hover:absolute
                 ${i == 0 ? 'firstStar' : 'star-div '}`}
               >
                 <Icon name='star' />
