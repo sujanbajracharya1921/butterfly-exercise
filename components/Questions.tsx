@@ -92,7 +92,7 @@ const Questions = (props: any) => {
         )}
 
         <div className='justify-center'>
-          <p className='text-white font-bold mt-5 mb-5 text-lg w-96'>Do you agree with the following statements:</p>
+          <p className='text-white font-bold mt-5 mb-5 text-lg'>Do you agree with the following statements:</p>
           {questions.map((question, i) => (
             <QuestionReview key={i} question={question} index={i} parentCallback={handleCallback} />
           ))}

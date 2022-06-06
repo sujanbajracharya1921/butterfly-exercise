@@ -14,11 +14,6 @@ const QuestionReview = (props: any) => {
     'color3' = '#f7a062',
     'color4' = '#ffdc00',
     'color5' = '#ffdc00'
-    // 'color6' = '#f4af7d',
-    // 'color7' = '#bbe88b',
-    // 'color8' = '#bbe88b',
-    // 'color9' = '#74e789',
-    // 'color10' = '#74e789'
   }
 
   function getHoverBackgroudColor(i: number) {
@@ -54,25 +49,36 @@ const QuestionReview = (props: any) => {
 
   return (
     <div key={props.type} className='bg-[#fff] h-auto w-full md:max-w-xl mb-4 rounded-md pl-3 pr-3 ml-auto mr-auto md:ml-0 md:mr-0'>
-      <div className='absolute h-14 text-blue-700 -mt-1 -mr-2 right-28 previousRating flex'>
-        <div className='flex'>
-          <Icon name='star' />
+      <div className='flex justify-end'>
+        <div className='absolute h-24 -mt-1 previousRating flex justify-center items-center mr-2'>
+          <div className='text-xs text-white -ml-14 flex justify-center items-center text-center'>
+            Last time
+            <br />
+            you said:
+            <div className='flex justify-center absolute text-white pt-14'>
+              {totalRatings.map((rating, i) => (
+                <div key={i}>
+                  <Icon name='star' height={10} width={10} />
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
       <div className='absolute w-0 h-0 mt-8 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white -ml-5'></div>
       <p className='text-gray-400 text-sm pl-6 pt-2'>{props.index + 1} of 5 </p>
-      <div className='pl-6 pb-6'>
+      <div className='pl-6 pb-6 w-[80%] pr-6'>
         <p className='text-[#2ce6ce] mb-4 font-bold'>{props.question.type}</p>
         <p className='font-bold text-xl text-gray-500'>{props.question.question}</p>
       </div>
 
       <div className='flex justify-center'>
-        <div className='bg-[#f7f7f7] w-[90%] grid grid-cols-5 rounded-3xl border-2 border-gray-200'>
+        <div className='bg-[#f7f7f7] w-[90%] grid grid-cols-5 rounded-3xl border-[3px] border-gray-200'>
           {totalRatings.map((rating, i) => (
             <div
               key={i}
               style={{ background: getHoverBackgroudColor(i + 1), color: getStarcolorOnUserRated(i) }}
-              className={` ${i == 4 ? 'lastStar' : ''} flex justify-center items-center text-center hover:text-white first:rounded-l-full`}
+              className={` ${i == 4 ? 'lastStar' : ''} flex justify-center star-wrapper items-center text-center hover:text-white first:rounded-l-full`}
               onMouseOver={() => setHoverRating(i + 1)}
               onMouseLeave={() => setHoverRating(0)}
               onClick={() => {
@@ -80,8 +86,10 @@ const QuestionReview = (props: any) => {
               }}
             >
               <div
-                className={`${checkUserRatingStatus(i + 1)} justify-center hover:bg-[#1b828e] hover: flex  items-center text-center  hover:rounded-[50%] h-10 w-10 
-                ${i == 0 ? 'firstStar' : ''}`}
+                className={`${checkUserRatingStatus(
+                  i + 1
+                )} justify-center h-10 w-10 items-center text-center hover:bg-[#1b828e] hover: flex hover:rounded-[50%]  hover:h-11 hover:w-11 hover:absolute
+                ${i == 0 ? 'firstStar' : 'star-div '}`}
               >
                 <Icon name='star' />
               </div>
