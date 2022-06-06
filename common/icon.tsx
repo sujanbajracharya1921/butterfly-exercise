@@ -20,7 +20,7 @@ interface IIconProps {
   iconColor?: string;
 }
 
-function getIcon(name: string, iconColor: string = '#000', className: string = '', height: number = 70, width: number = 70) {
+function getIcon(name: string, iconColor: string = '#000', className: string = '', height: number = 0, width: number = 0) {
   switch (name) {
     case 'butterfly':
       return <Butterfly fill={iconColor} className={className} height={height} width={width} />;

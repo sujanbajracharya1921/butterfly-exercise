@@ -32,5 +32,21 @@ a {
 
 .previousRating {
   border-bottom: 13px solid transparent;
-  border-left: 57px solid #1b828e;
+  border-left: 60px solid #1b828e;
+}
+
+.star-wrapper:hover > .star-div {
+  background: #1b828e;
+  border-radius: 50%;
+  position: absolute;
+  height: 2.75rem;
+  width: 2.75rem;
+}
+
+.star-wrapper:hover > .firstStar {
+  background: #e95666 !important;
+  border-radius: 50%;
+  position: absolute;
+  height: 2.75rem;
+  width: 2.75rem;
 }
