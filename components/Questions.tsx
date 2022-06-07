@@ -20,6 +20,7 @@ const Questions = (props: any) => {
 
   useEffect(() => {
     setSelectedMood(router.query.id);
+    setQuestions(questions.sort(() => Math.random() - 0.5));
   }, [router]);
 
   function handleCallback(answeredQuestion: any) {
