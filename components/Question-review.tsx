@@ -17,25 +17,32 @@ const QuestionReview = (props: any) => {
     'color5' = '#ffdc00'
   }
 
-  function getHoverBackgroudColor(i: number) {
+  function getHoverBackgroudColor(index: number) {
     const selectedRating = hoverRating || userRating;
     const colorCode = ratingBackground[`color${selectedRating}`];
     if (!selectedRating) {
       return 'transparent';
     } else {
-      if (i == selectedRating && i != 1) return `linear-gradient(90deg,${colorCode} 50%,transparent 0)`;
-      else if (i < selectedRating) return colorCode;
+      const backgroundFill = index == 2 || index == 3 ? '55%' : '70%';
+      if (index == selectedRating && index != 1) return `linear-gradient(90deg,${colorCode} ${backgroundFill},transparent 0)`;
+      else if (index < selectedRating) return colorCode;
     }
   }
 
   function checkUserRatingStatus(index: number) {
     if (userRating && userRating == index) {
-      const baseClass = 'bg-[#1b828e] rounded-[50%] h-11 w-11 absolute';
+      const baseClass = 'bg-[#1b828e] rounded-[50%] h-[44px!important] w-[44px!important] absolute';
       if (userRating == 5) return baseClass + ' ' + 'text-[#ffdc00]';
-      else if (userRating == 1) return 'bg-[#e95666] rounded-[50%]';
+      else if (userRating == 1) return baseClass + ' ' + 'bg-[#e95666] rounded-[50%]';
       return baseClass + ' ' + 'text-white';
     }
   }
+
+  function setStarPosition(index: number) {
+    if (index == 2) return 'sm:-ml-[1rem] md:-ml-[2.5rem]';
+    if (index == 3) return 'sm:-ml-[1rem] md:-ml-[2.5rem]';
+  }
+
   function handleUserRatingAction(index: number) {
     setShowCommentBox(true);
     setUserRating(index + 1);
@@ -99,9 +106,8 @@ const QuestionReview = (props: any) => {
               }}
             >
               <div
-                className={`${checkUserRatingStatus(
-                  i + 1
-                )} justify-center h-10 w-10 items-center text-center hover:bg-[#1b828e] hover: flex hover:rounded-[50%]  hover:h-11 hover:w-11 hover:absolute}
+                className={`h-10 w-10 ${checkUserRatingStatus(i + 1)}  ${setStarPosition(i + 1)}
+                justify-center items-center text-center hover:bg-[#1b828e] hover: flex hover:rounded-[50%] hover:h-11 hover:w-11 hover:absolute}
                 ${i == 0 ? 'firstStar' : 'star-div '}`}
               >
                 <Icon name='star' />

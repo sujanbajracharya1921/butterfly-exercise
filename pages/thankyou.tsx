@@ -1,6 +1,14 @@
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 import Footer from '../common/footer';
 
 const Thankyou = () => {
+  const router = useRouter();
+
+  setTimeout(() => {
+    router.push('/');
+  }, 3000);
+
   return (
     <div className='h-screen bg-[#166e78] pt-6 pl-4 md:pl-12 pr-4'>
       <div className='absolute w-0 h-0 mt-8 border-t-8 border-t-transparent border-b-8 border-b-transparent border-r-8 border-r-white -ml-2'></div>

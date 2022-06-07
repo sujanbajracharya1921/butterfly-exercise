@@ -50,3 +50,33 @@ a {
   height: 2.75rem;
   width: 2.75rem;
 }
+
+@media (min-width: 400px) {
+  .firstStar {
+    margin-left: -1.5rem !important;
+  }
+
+  .star-div {
+    margin-right: -1.5rem !important;
+  }
+}
+
+@media (min-width: 520px) {
+  .firstStar {
+    margin-left: -2rem !important;
+  }
+
+  .star-div {
+    margin-right: -2rem !important;
+  }
+}
+
+@media (min-width: 650px) {
+  .firstStar {
+    margin-left: -3.5rem !important;
+  }
+
+  .star-div {
+    margin-right: -3.5rem !important;
+  }
+}
