@@ -7,6 +7,7 @@ const QuestionReview = (props: any) => {
   const [totalRatings] = useState([1, 2, 3, 4, 5]);
   const [hoverRating, setHoverRating] = useState(0);
   const [userRating, setUserRating] = useState(0);
+  const [previousUserRating, setPreviousUserRating] = useState(0);
 
   enum ratingBackground {
     'color1' = '#e95666',
@@ -29,14 +30,16 @@ const QuestionReview = (props: any) => {
 
   function checkUserRatingStatus(index: number) {
     if (userRating && userRating == index) {
-      const baseClass = 'bg-[#1b828e] rounded-[50%]';
+      const baseClass = 'bg-[#1b828e] rounded-[50%] h-11 w-11 absolute';
       if (userRating == 5) return baseClass + ' ' + 'text-[#ffdc00]';
+      else if (userRating == 1) return 'bg-[#e95666] rounded-[50%]';
       return baseClass + ' ' + 'text-white';
     }
   }
   function handleUserRatingAction(index: number) {
     setShowCommentBox(true);
     setUserRating(index + 1);
+    setPreviousUserRating(index + 1);
     let answeredQuestion = props.question;
     answeredQuestion.isAnswered = true;
     props.parentCallback(answeredQuestion);
@@ -45,6 +48,16 @@ const QuestionReview = (props: any) => {
   function getStarcolorOnUserRated(index: number) {
     const selectedRating = hoverRating || userRating;
     return selectedRating > index ? 'white' : 'gray';
+  }
+
+  function handleMouseOverAction(index: number) {
+    setHoverRating(index);
+    setUserRating(0);
+  }
+
+  function handleMouseLeaveAction() {
+    setHoverRating(0);
+    if (previousUserRating != userRating) setUserRating(previousUserRating);
   }
 
   return (
@@ -79,8 +92,8 @@ const QuestionReview = (props: any) => {
               key={i}
               style={{ background: getHoverBackgroudColor(i + 1), color: getStarcolorOnUserRated(i) }}
               className={` ${i == 4 ? 'lastStar' : ''} flex justify-center star-wrapper items-center text-center hover:text-white first:rounded-l-full`}
-              onMouseOver={() => setHoverRating(i + 1)}
-              onMouseLeave={() => setHoverRating(0)}
+              onMouseOver={() => handleMouseOverAction(i + 1)}
+              onMouseLeave={() => handleMouseLeaveAction()}
               onClick={() => {
                 handleUserRatingAction(i);
               }}
@@ -88,7 +101,7 @@ const QuestionReview = (props: any) => {
               <div
                 className={`${checkUserRatingStatus(
                   i + 1
-                )} justify-center h-10 w-10 items-center text-center hover:bg-[#1b828e] hover: flex hover:rounded-[50%]  hover:h-11 hover:w-11 hover:absolute
+                )} justify-center h-10 w-10 items-center text-center hover:bg-[#1b828e] hover: flex hover:rounded-[50%]  hover:h-11 hover:w-11 hover:absolute}
                 ${i == 0 ? 'firstStar' : 'star-div '}`}
               >
                 <Icon name='star' />
