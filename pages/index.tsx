@@ -3,7 +3,7 @@ import Moods from '../components/Moods';
 
 const Home = () => {
   return (
-    <div className='bg-[#2ce6ce] h-screen flex justify-center items-center px-10'>
+    <div className='bg-[#2ce6ce] h-screen flex justify-center items-center px-[0.5rem]'>
       <div className='justify-center items-center w-full md:max-w-lg'>
         <div className='flex p-4 justify-between'>
           <div className='flex'>
