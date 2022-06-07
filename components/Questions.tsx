@@ -76,9 +76,6 @@ const Questions = (props: any) => {
                 <strong className='text-[#2ce6ce]'> always remain anonymous</strong>
                 <p>and will be viewed by the following managers:</p>
               </div>
-              {/* <div>
-                <Image src='' height={30} width={30} />
-              </div> */}
             </div>
             <div className='text-white hidden md:flex justify-end font-bold text-xl w-0 md:w-[15%]'>
               <div>Butterfly Inc.</div>
