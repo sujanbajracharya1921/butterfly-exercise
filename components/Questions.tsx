@@ -116,8 +116,13 @@ const Questions = (props: any) => {
           ></textarea>
         </div>
 
-        <div className={`bg-[#2ce6ce] mt-8 h-10 w-40 rounded-sm justify-center items-center flex ${userRatedQuestionCount < 5 ? 'bg-[#ededed] text-gray-300' : 'text-white'}`}>
-          <button className='font-bold' disabled={userRatedQuestionCount == 5 ? false : true} onClick={handleSendAnswerAction}>
+        <div
+          onClick={() => userRatedQuestionCount == 5 && handleSendAnswerAction()}
+          className={`bg-[#2ce6ce] mt-8 h-10 w-40 rounded-sm justify-center items-center flex ${userRatedQuestionCount == 5 ? 'cursor-pointer' : ''} ${
+            userRatedQuestionCount < 5 ? 'bg-[#ededed] text-gray-300' : 'text-white'
+          }`}
+        >
+          <button className='font-bold' disabled={userRatedQuestionCount == 5 ? false : true}>
             Send answers
           </button>
         </div>
