@@ -58,7 +58,7 @@ const Questions = (props: any) => {
     <div className='bg-[#166e78] pl-4 md:pl-12 pr-4'>
       <>
         {!showUpdateMood && (
-          <div className='flex pt-2 md:pt-6 w-full mb-8'>
+          <div className='flex pt-2 md:pt-4 w-full mb-8'>
             <div className='flex text-center items-center justify-center'>
               <span onClick={() => setShowUpdateMood(true)} className='cursor-pointer hidden md:flex bg-[#0d4d54] h-6 w-6 items-center justify-center rounded-l-sm'>
                 <Icon name='edit' />
@@ -75,6 +75,10 @@ const Questions = (props: any) => {
                 Your answers will
                 <strong className='text-[#2ce6ce]'> always remain anonymous</strong>
                 <p>and will be viewed by the following managers:</p>
+              </div>
+              <div className='pt-2 flex text-[#7babb1] text-sm font-semibold'>
+                <Image className='rounded-[50%]' src='/images/user_icon.png' alt='user' width='25' height='25' />
+                <div className='pl-3'> Butterfly Inc</div>
               </div>
             </div>
             <div className='text-white hidden md:flex justify-end font-bold text-xl w-0 md:w-[15%]'>
