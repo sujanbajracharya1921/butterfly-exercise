@@ -57,6 +57,7 @@ const Questions = (props: any) => {
 
   function handleMoodUpdateCallBack() {
     setIsMoodUpdated(true);
+    setShowUpdateMood(false);
   }
 
   return (
