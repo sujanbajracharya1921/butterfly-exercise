@@ -18,11 +18,12 @@ const Questions = (props: any) => {
   const [showUpdateMood, setShowUpdateMood] = useState(false);
   const [selectedMood, setSelectedMood] = useState<any>('');
   const [userRatedQuestionCount, setUserRatedQuestionCount] = useState(0);
+  const [isMoodUpdated, setIsMoodUpdated] = useState(false);
 
   useEffect(() => {
     setSelectedMood(router.query.id);
-    setQuestions(questions.sort(() => Math.random() - 0.5));
-  }, [router, questions]);
+    if (!isMoodUpdated) setQuestions(questions.sort(() => Math.random() - 0.5));
+  }, [router, questions, isMoodUpdated]);
 
   function handleCallback(answeredQuestion: any) {
     let index = questions.findIndex((question) => question.type == answeredQuestion.type);
@@ -52,6 +53,10 @@ const Questions = (props: any) => {
       default:
         break;
     }
+  }
+
+  function handleMoodUpdateCallBack() {
+    setIsMoodUpdated(true);
   }
 
   return (
@@ -91,7 +96,7 @@ const Questions = (props: any) => {
             <div className='bg-[#0d4d54] w-full md:max-w-md h-36 rounded-sm'>
               <p className='text-white font-bold text-base p-4 md:pl-10'>Oops, you'd would like to change my mood:</p>
               <div className='flex gap-1 md:gap-4 justify-center items-center text-center pl-6 pr-6 md:pl-0 md:pr-0'>
-                <Moods selectedMood={selectedMood} />
+                <Moods selectedMood={selectedMood} moodUpdateCallback={handleMoodUpdateCallBack} />
               </div>
             </div>
           </div>

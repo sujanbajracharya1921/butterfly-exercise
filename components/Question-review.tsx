@@ -68,7 +68,7 @@ const QuestionReview = (props: any) => {
   }
 
   return (
-    <div key={props.type} className='bg-[#fff] h-auto w-full md:max-w-xl mb-4 rounded-md pl-3 pr-3 ml-auto mr-auto md:ml-0 md:mr-0'>
+    <div key={props.type} className='bg-[#fff] h-auto w-full md:max-w-xl mb-4 rounded-md pl-3 pr-3 ml-auto mr-auto md:ml-0 md:mr-0 relative'>
       <div className='flex justify-end'>
         <div className='absolute h-24 -mt-1 previousRating flex justify-center items-center mr-2'>
           <div className='text-xs text-white -ml-14 flex justify-center items-center text-center'>
@@ -98,7 +98,7 @@ const QuestionReview = (props: any) => {
             <div
               key={i}
               style={{ background: getHoverBackgroudColor(i + 1), color: getStarcolorOnUserRated(i) }}
-              className={` ${i == 4 ? 'lastStar' : ''} flex justify-center star-wrapper items-center text-center hover:text-white first:rounded-l-full`}
+              className={` ${i == 4 ? 'lastStar' : ''} flex justify-center star-wrapper items-center text-center cursor-pointer hover:text-white first:rounded-l-full`}
               onMouseOver={() => handleMouseOverAction(i + 1)}
               onMouseLeave={() => handleMouseLeaveAction()}
               onClick={() => {

@@ -7,7 +7,8 @@ function Moods(props: any) {
   const Router = useRouter();
 
   function handleMoodReaction(name: string) {
-    Router.replace(`/questions/${name}`);
+    if (Router.query.id) props.moodUpdateCallback(true);
+    Router.push(`/questions/${name}`);
   }
 
   return (
