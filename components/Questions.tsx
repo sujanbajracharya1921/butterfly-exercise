@@ -18,12 +18,14 @@ const Questions = (props: any) => {
   const [showUpdateMood, setShowUpdateMood] = useState(false);
   const [selectedMood, setSelectedMood] = useState<any>('');
   const [userRatedQuestionCount, setUserRatedQuestionCount] = useState(0);
-  const [isMoodUpdated, setIsMoodUpdated] = useState(false);
 
   useEffect(() => {
     setSelectedMood(router.query.id);
-    if (!isMoodUpdated) setQuestions(questions.sort(() => Math.random() - 0.5));
-  }, [router, questions, isMoodUpdated]);
+  }, [router]);
+
+  useEffect(() => {
+    setQuestions(questions.sort(() => Math.random() - 0.5));
+  }, [questions]);
 
   function handleCallback(answeredQuestion: any) {
     let index = questions.findIndex((question) => question.type == answeredQuestion.type);
@@ -56,7 +58,6 @@ const Questions = (props: any) => {
   }
 
   function handleMoodUpdateCallBack() {
-    setIsMoodUpdated(true);
     setShowUpdateMood(false);
   }
 
