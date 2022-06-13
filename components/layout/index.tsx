@@ -14,7 +14,7 @@ function Layout({ children }: any) {
   return (
     <div className='flex'>
       {/* Sidebar */}
-      {activeRoute != '/' && activeRoute != 'thankyou' && (
+      {(activeRoute.includes('questions') || activeRoute.includes('thankyou')) && (
         <div className='bg-[#0d4d54] w-12 md:w-10 justify-center p-1 pt-2 overflow-hidden relative'>
           <div className='bg-[#2ce6ce] flex justify-center items-center h-6 w-[80%] rounded-sm ml-[0.20rem]'>
             <Icon name='butterfly' height={14} width={18} />
